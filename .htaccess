@@ -7,6 +7,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 
 RewriteEngine On
+RewriteCond %{QUERY_STRING} .
+RewriteRule ^([^.]*)$ /$1? [L,NE,R=301]
+
+RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
